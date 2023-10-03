@@ -1,0 +1,38 @@
+----------------------------------------------------------------------------------------------
+# colab 한글지원 #1, #2, 이후에 바로 가능
+
+# 1. 모듈 설치 koreanize-matplotlib
+# 참조 사이트 https://github.com/ychoi-kr/koreanize-matplotlib
+!pip install koreanize-matplotlib
+
+# 2. 한글을 선명하게 
+%config InlineBackend.figure_format = 'retina'
+
+# 3. 바로 실행 테스트
+import koreanize_matplotlib
+import matplotlib.pyplot as plt
+
+plt.plot([-1, 0, 1, 2])
+plt.title('그래프 제목', fontweight="bold")
+plt.xlabel('간단한 그래프')
+plt.show()
+
+# 4 테스트
+import numpy as np
+import matplotlib.pyplot as plt
+
+plt.plot(range(-20, 80), np.random.randn(100).cumsum(), 'r--')
+plt.title('한글 점검');
+
+# 5 테스트
+fig = plt.figure(figsize=(15, 12))
+fig, ax = plt.subplots(subplot_kw=dict(projection='3d'), figsize=(15, 12))
+
+graph_title = '시험'
+ax.set_title(f'{graph_title}')
+ax.set_xlabel('야호 (Hz)', labelpad=20)
+ax.set_ylabel('시간 (s)', labelpad=20)
+ax.set_zlabel('이건 뭐지 (dB/Hz)', labelpad=20)
+
+ax.view_init(20, 20)
+plt.show()
